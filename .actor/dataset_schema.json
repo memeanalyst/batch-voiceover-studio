@@ -1,0 +1,167 @@
+{
+ "actorSpecification": 1,
+ "fields": {
+  "properties": {
+   "audioSeconds": {
+    "description": "Duration of the finished voiceover in seconds",
+    "title": "Audio length (s)",
+    "type": [
+     "number",
+     "null"
+    ]
+   },
+   "audioUrl": {
+    "description": "Public download URL of the finished voiceover file",
+    "title": "Audio URL",
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "characters": {
+    "description": "Characters in the script text",
+    "title": "Characters",
+    "type": [
+     "integer",
+     "null"
+    ]
+   },
+   "charactersBilled": {
+    "description": "Pay-per-event units charged: ceil(characters / 1000), minimum 1, 0 on ERROR rows",
+    "title": "Billed units",
+    "type": [
+     "integer",
+     "null"
+    ]
+   },
+   "chunks": {
+    "description": "Sentence chunks the script was split into for synthesis",
+    "title": "Chunks",
+    "type": [
+     "integer",
+     "null"
+    ]
+   },
+   "error": {
+    "description": "Why the script failed; null when fine",
+    "title": "Error / note",
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "format": {
+    "description": "mp3 or wav",
+    "title": "Format",
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "generatedAt": {
+    "description": "UTC timestamp when the row was produced",
+    "title": "Generated at",
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "index": {
+    "description": "Position of the script in the input batch (0-based)",
+    "title": "Script #",
+    "type": [
+     "integer",
+     "null"
+    ]
+   },
+   "processingSecs": {
+    "description": "Wall-clock seconds spent on this script",
+    "title": "Processing (s)",
+    "type": [
+     "number",
+     "null"
+    ]
+   },
+   "status": {
+    "description": "OK (voiceover generated and charged) or ERROR (failed, not charged)",
+    "title": "Status",
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "title": {
+    "description": "The script's title from the input, or a generated 'Script N'",
+    "title": "Title",
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "voice": {
+    "description": "The narrator voice used (per-script override or the batch voice)",
+    "title": "Voice",
+    "type": [
+     "string",
+     "null"
+    ]
+   }
+  },
+  "type": "object"
+ },
+ "views": {
+  "voiceovers": {
+   "title": "Voiceovers",
+   "transformation": {
+    "fields": [
+     "index",
+     "title",
+     "status",
+     "voice",
+     "characters",
+     "charactersBilled",
+     "audioSeconds",
+     "format",
+     "audioUrl",
+     "error"
+    ]
+   },
+   "display": {
+    "component": "table",
+    "properties": {
+     "index": {
+      "label": "Script #"
+     },
+     "title": {
+      "label": "Title"
+     },
+     "status": {
+      "label": "Status"
+     },
+     "voice": {
+      "label": "Voice"
+     },
+     "characters": {
+      "label": "Characters"
+     },
+     "charactersBilled": {
+      "label": "Billed units"
+     },
+     "audioSeconds": {
+      "label": "Audio (s)"
+     },
+     "format": {
+      "label": "Format"
+     },
+     "audioUrl": {
+      "label": "Audio URL",
+      "format": "link"
+     },
+     "error": {
+      "label": "Error / note"
+     }
+    }
+   }
+  }
+ }
+}

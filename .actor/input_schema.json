@@ -1,0 +1,130 @@
+{
+ "title": "Batch Voiceover Studio input",
+ "type": "object",
+ "schemaVersion": 1,
+ "properties": {
+  "scripts": {
+   "title": "Scripts to narrate",
+   "type": "array",
+   "editor": "json",
+   "description": "The batch: an array of script objects, one voiceover file per item. Each item: \"text\" (required \u2014 the words to narrate, up to 100,000 characters; long texts are split into sentence chunks automatically), \"title\" (optional \u2014 names the output file and row), \"voice\" (optional \u2014 overrides the global Voice for this item only). One bad item never stops the batch: it returns an ERROR row and is not charged. Example item: {\"title\": \"Intro\", \"text\": \"Welcome to the show.\", \"voice\": \"Easton\"}",
+   "prefill": [
+    {
+     "title": "Welcome message",
+     "text": "Welcome to Batch Voiceover Studio. This sample was generated entirely on a CPU, with no API key and no GPU."
+    },
+    {
+     "title": "Product teaser",
+     "text": "Turn a list of scripts into finished voiceovers in one run. One flat rate per thousand characters, thirty-seven voices to choose from, and audio files you can download straight away.",
+     "voice": "Easton"
+    }
+   ]
+  },
+  "voice": {
+   "title": "Voice",
+   "type": "string",
+   "editor": "select",
+   "enum": [
+    "Zoey",
+    "Juniper",
+    "Everly",
+    "Harper",
+    "Hadley",
+    "Delia",
+    "Easton",
+    "Micah",
+    "Trevor",
+    "Russell",
+    "Preston",
+    "Miles",
+    "Maeve",
+    "Freya",
+    "Pippa",
+    "Elodie-Rose",
+    "Imogen",
+    "Lottie",
+    "Alfie",
+    "Hugh",
+    "Edwin",
+    "Spencer",
+    "Toby",
+    "Teddy",
+    "Bryony",
+    "Captain Silas Blackwater",
+    "Morwenna of the Deep",
+    "Old Mortlake",
+    "Azgorath",
+    "Fennick the Young Elf",
+    "The Thing Under the Stairs",
+    "Vyrmathrax the Ancient",
+    "Grub the Ogre",
+    "Master Aldric",
+    "The Snow Queen",
+    "Sir Bramwell",
+    "Fairy Godmother"
+   ],
+   "enumTitles": [
+    "Zoey",
+    "Juniper",
+    "Everly",
+    "Harper",
+    "Hadley",
+    "Delia",
+    "Easton",
+    "Micah",
+    "Trevor",
+    "Russell",
+    "Preston",
+    "Miles",
+    "Maeve",
+    "Freya",
+    "Pippa",
+    "Elodie-Rose",
+    "Imogen",
+    "Lottie",
+    "Alfie",
+    "Hugh",
+    "Edwin",
+    "Spencer",
+    "Toby",
+    "Teddy",
+    "Bryony",
+    "Captain Silas Blackwater",
+    "Morwenna of the Deep",
+    "Old Mortlake",
+    "Azgorath",
+    "Fennick the Young Elf",
+    "The Thing Under the Stairs",
+    "Vyrmathrax the Ancient",
+    "Grub the Ogre",
+    "Master Aldric",
+    "The Snow Queen",
+    "Sir Bramwell",
+    "Fairy Godmother"
+   ],
+   "default": "Harper",
+   "prefill": "Harper",
+   "sectionCaption": "Narration settings",
+   "description": "The narrator voice for every script in the batch (a script can override it with its own \"voice\"). 37 English voices from the Phonon catalog: American and British narrators plus character voices (pirate captain, wizard, dragon and more). Harper is a modern, confident, friendly American voice \u2014 a safe default for explainers and ads."
+  },
+  "outputFormat": {
+   "title": "Output format",
+   "type": "string",
+   "editor": "select",
+   "enum": [
+    "mp3",
+    "wav"
+   ],
+   "enumTitles": [
+    "MP3 (smaller, ready to publish)",
+    "WAV (lossless, for editing)"
+   ],
+   "default": "mp3",
+   "prefill": "mp3",
+   "description": "Audio file format for every voiceover in the batch: MP3 (compact, ready for video editors and podcast tools) or WAV (lossless 24 kHz, for further editing). The dataset row's audioUrl points at the finished file either way."
+  }
+ },
+ "required": [
+  "scripts"
+ ]
+}
